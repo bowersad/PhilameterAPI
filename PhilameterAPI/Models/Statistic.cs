@@ -7,7 +7,7 @@ namespace PhilameterAPI.Models
 {
     public class Statistic : Resource
     {
-        public int StatisticId { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
