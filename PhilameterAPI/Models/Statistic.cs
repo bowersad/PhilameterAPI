@@ -11,12 +11,11 @@ namespace PhilameterAPI.Models
 
         public string Name { get; set; }
 
-        public Category Category { get; set; }
-
         public decimal Value { get; set; }
 
         public StatPeriod Frequency { get; set; }
     }
 
     public enum StatPeriod { daily, weekly, monthly, yearly }
+
 }

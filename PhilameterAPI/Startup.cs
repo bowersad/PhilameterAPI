@@ -48,6 +48,8 @@ namespace PhilameterAPI
 
             services.AddMvc();
 
+            //Don't forget to wireup the DI items with the AddScoped
+            services.AddScoped<IStatisticService, DefaultStatisticService>();
 
         }
 
@@ -55,6 +57,16 @@ namespace PhilameterAPI
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+
+            if (env.IsDevelopment())
+            {
+                //Turn on details errors
+                app.UseDeveloperExceptionPage();
+
+                //Add some test data in memory
+                var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
+                AddTestData(context);
+            }
 
             app.UseMvc();
         }

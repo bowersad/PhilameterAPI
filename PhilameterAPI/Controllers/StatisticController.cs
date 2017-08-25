@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PhilameterAPI.Models;
+using PhilameterAPI.Services;
 
 namespace PhilameterAPI.Controllers
 {
@@ -10,14 +13,19 @@ namespace PhilameterAPI.Controllers
     [Route("/Statistic")]
     public class StatisticController : Controller
     {
-        [HttpGet]
-        public IActionResult StatisticRoot()
+
+        private IStatisticService _service;
+
+        public StatisticController(IStatisticService service)
         {
-            var result = new
-            {
-                href = Url.Link(nameof(StatisticRoot), null),
-                stat = "a stat"
-            };
+            _service = service;
+        }
+
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> StatisticRoot(int Id, CancellationToken ct)
+        {
+            var result = await _service.GetStatAsync(Id, ct);
+            if (result == null) return NotFound();
 
             return Ok(result);
         } 
