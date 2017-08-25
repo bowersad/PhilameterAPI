@@ -58,15 +58,22 @@ namespace PhilameterAPI
         {
             loggerFactory.AddConsole();
 
-            if (env.IsDevelopment())
-            {
-                //Turn on details errors
-                app.UseDeveloperExceptionPage();
+            //if (env.IsDevelopment())
+            //{
+            //    //Turn on details errors
+            //    app.UseDeveloperExceptionPage();
 
-                //Add some test data in memory
-                var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
-                AddTestData(context);
-            }
+            //    //Add some test data in memory
+            //    var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
+            //    AddTestData(context);
+            //}
+
+            //Turn on details errors
+            app.UseDeveloperExceptionPage();
+
+            //Add some test data in memory
+            var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
+            AddTestData(context);
 
             app.UseMvc();
         }
