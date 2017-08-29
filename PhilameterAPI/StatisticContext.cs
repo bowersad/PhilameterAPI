@@ -9,9 +9,16 @@ namespace PhilameterAPI
 {
     public class StatisticContext : DbContext
     {
-        public StatisticContext( DbContextOptions options) : base(options)
-        {
+        public static string ConnectionString { get; set; }
 
+        public StatisticContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            //optionsBuilder.UseSqlServer(ConnectionString);
         }
 
         public DbSet<StatisticEntity> Statistics { get; set; }

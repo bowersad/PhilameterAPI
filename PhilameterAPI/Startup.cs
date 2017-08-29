@@ -42,8 +42,12 @@ namespace PhilameterAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //StatisticContext.ConnectionString = Configuration.GetConnectionString("PhilameterDB");
+
 
             services.AddDbContext<StatisticContext>(opt => opt.UseInMemoryDatabase());
+            services.AddDbContext<StatisticContext>();
+
             services.AddAutoMapper();
 
             services.AddMvc();
