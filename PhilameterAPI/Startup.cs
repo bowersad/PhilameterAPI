@@ -42,10 +42,10 @@ namespace PhilameterAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            //StatisticContext.ConnectionString = Configuration.GetConnectionString("PhilameterDB");
+            StatisticContext.ConnectionString = Configuration.GetConnectionString("PhilameterLocalDB");
 
 
-            services.AddDbContext<StatisticContext>(opt => opt.UseInMemoryDatabase());
+            //services.AddDbContext<StatisticContext>(opt => opt.UseInMemoryDatabase());
             services.AddDbContext<StatisticContext>();
 
             services.AddAutoMapper();
@@ -76,39 +76,36 @@ namespace PhilameterAPI
             app.UseDeveloperExceptionPage();
 
             //Add some test data in memory
-            var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
-            AddTestData(context);
+            //var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
+            //AddTestData(context);
 
             app.UseMvc();
         }
 
         private static void AddTestData(StatisticContext context)
         {
-            context.Statistics.Add(new StatisticEntity
+            context.Stats.Add(new StatEntity
             {
                 Id = 1,
                 Name = "Births",
-                Value = 23086,
-                Category = 1,
-                StatPeriod = 3
+                Stat = 23086,
+                Category_Id = 1
             });
 
-            context.Statistics.Add(new StatisticEntity
+            context.Stats.Add(new StatEntity
             {
                 Id = 2,
                 Name = "Pretzels Eaten",
-                Value = 63821,
-                Category = 2,
-                StatPeriod = 0
+                Stat = 63821,
+                Category_Id = 2
             });
 
-            context.Statistics.Add(new StatisticEntity
+            context.Stats.Add(new StatEntity
             {
                 Id = 3,
                 Name = "SEPTA Ridership",
-                Value = 333600,
-                Category = 3,
-                StatPeriod = 0
+                Stat = 333600,
+                Category_Id = 3
             });
 
             context.SaveChanges();

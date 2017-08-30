@@ -11,8 +11,8 @@ namespace PhilameterAPI.Infrastructure
     {
         public MappingProfile()
         {
-            CreateMap<StatisticEntity, Statistic>()
-                .ForMember(dest => dest.Value, opt => opt.MapFrom(src => src.Value / 100m));
+            CreateMap<StatEntity, Statistics>()
+                .ForMember(dest => dest.Stat, opt => opt.MapFrom(src => src.Stat / 100m));
         }
     }
 }

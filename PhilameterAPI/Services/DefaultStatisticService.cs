@@ -18,12 +18,12 @@ namespace PhilameterAPI.Services
             _context = context;
         }
 
-        public async Task<Statistic> GetStatAsync(int Id, CancellationToken ct)
+        public async Task<Statistics> GetStatAsync(int Id, CancellationToken ct)
         {
-            var entity = await _context.Statistics.SingleOrDefaultAsync(r => r.Id == Id, ct);
+            var entity = await _context.Stats.SingleOrDefaultAsync(r => r.Id == Id, ct);
             if (entity == null) return null;
 
-            return Mapper.Map<Statistic>(entity);
+            return Mapper.Map<Statistics>(entity);
         }
     }
 }

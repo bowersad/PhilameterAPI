@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace PhilameterAPI.Models
 {
-    public class Statistic : Resource
+    public class Statistics : Resource
     {
         public int Id { get; set; }
 
         public string Name { get; set; }
 
-        public decimal Value { get; set; }
+        public decimal Stat { get; set; }
 
         public StatPeriod Frequency { get; set; }
     }

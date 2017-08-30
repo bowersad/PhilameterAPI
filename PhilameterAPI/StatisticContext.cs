@@ -18,10 +18,10 @@ namespace PhilameterAPI
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(ConnectionString);
+            optionsBuilder.UseSqlServer(ConnectionString);
         }
 
-        public DbSet<StatisticEntity> Statistics { get; set; }
+        public DbSet<StatEntity> Stats { get; set; }
 
     }
 }
