@@ -13,7 +13,7 @@ namespace PhilameterAPI.Models
 
         public int Category_Id { get; set; }
 
-        public int Stat { get; set; }
+        public double Stat { get; set; }
 
         //public int StatPeriod { get; set; }
 
