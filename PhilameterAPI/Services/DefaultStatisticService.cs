@@ -25,5 +25,19 @@ namespace PhilameterAPI.Services
 
             return Mapper.Map<Statistics>(entity);
         }
+
+        public async Task<List<Statistics>> GetAllStatsAsync(CancellationToken ct)
+        {
+            List<StatEntity> entity;
+            entity = await _context.Stats.ToListAsync(ct);
+
+            if (entity == null) return null;
+
+            var result = Mapper.Map<List<Statistics>>(entity);
+            //Mapper.AssertConfigurationIsValid();
+
+            return result;
+
+        }
     }
 }

@@ -29,5 +29,14 @@ namespace PhilameterAPI.Controllers
 
             return Ok(result);
         } 
+
+        [HttpGet]
+        public async Task<IActionResult> StatisticAll(CancellationToken ct)
+        {
+            var result = await _service.GetAllStatsAsync(ct);
+            if (result == null) return NotFound();
+
+            return Ok(result);
+        }
     }
 }

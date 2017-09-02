@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using PhilameterAPI.Models;
 
 namespace PhilameterAPI.Infrastructure
@@ -13,6 +14,7 @@ namespace PhilameterAPI.Infrastructure
         {
             CreateMap<StatEntity, Statistics>()
                 .ForMember(dest => dest.Stat, opt => opt.MapFrom(src => src.Stat));
+
         }
     }
 }

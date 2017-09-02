@@ -11,5 +11,7 @@ namespace PhilameterAPI.Services
     public interface IStatisticService
     {
         Task<Statistics> GetStatAsync(int Id, CancellationToken ct);
+
+        Task<List<Statistics>> GetAllStatsAsync(CancellationToken ct);
     }
 }
