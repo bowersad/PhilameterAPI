@@ -9,19 +9,18 @@ using PhilameterAPI.Services;
 
 namespace PhilameterAPI.Controllers
 {
-    [Route("/Stat")]
-    [Route("/Statistic")]
-    public class StatisticController : Controller
+    [Route("/Stats")]
+    public class StatsController : Controller
     {
 
         private IStatisticService _service;
 
-        public StatisticController(IStatisticService service)
+        public StatsController(IStatisticService service)
         {
             _service = service;
         }
 
-        [HttpGet("{Id}")]
+        [HttpGet("/Stats/{Id}")]
         public async Task<IActionResult> StatisticRoot(int Id, CancellationToken ct)
         {
             var result = await _service.GetStatAsync(Id, ct);
