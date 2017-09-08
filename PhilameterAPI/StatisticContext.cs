@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore; 
 using PhilameterAPI.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace PhilameterAPI
 {
-    public class StatisticContext : DbContext
+    public class StatisticContext : IdentityDbContext<UserEntity,UserRoleEntity,Guid>
     {
         public static string ConnectionString { get; set; }
 
@@ -20,6 +21,7 @@ namespace PhilameterAPI
         {
             optionsBuilder.UseSqlServer(ConnectionString);
         }
+
 
         public DbSet<StatEntity> Stats { get; set; }
 

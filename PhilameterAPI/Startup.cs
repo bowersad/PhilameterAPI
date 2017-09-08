@@ -50,6 +50,10 @@ namespace PhilameterAPI
             //services.AddDbContext<StatisticContext>(opt => opt.UseInMemoryDatabase());
             services.AddDbContext<StatisticContext>();
 
+            services.AddIdentity<UserEntity, UserRoleEntity>()
+                .AddEntityFrameworkStores<StatisticContext, Guid>()
+                .AddDefaultTokenProviders();
+
             services.AddAutoMapper();
 
             services.AddMvc();
