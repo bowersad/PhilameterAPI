@@ -14,11 +14,7 @@ using PhilameterAPI.Models;
 using PhilameterAPI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
-
-
-
-
-
+using Microsoft.AspNetCore.Identity;
 
 namespace PhilameterAPI
 {
@@ -68,15 +64,20 @@ namespace PhilameterAPI
         {
             loggerFactory.AddConsole();
 
-            //if (env.IsDevelopment())
-            //{
-            //    //Turn on details errors
-            //    app.UseDeveloperExceptionPage();
+            if (env.IsDevelopment())
+            {
+                //Turn on details errors
+                app.UseDeveloperExceptionPage();
 
-            //    //Add some test data in memory
-            //    var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
-            //    AddTestData(context);
-            //}
+                //Add some test data in memory
+                //var context = app.ApplicationServices.GetRequiredService<StatisticContext>();
+                //AddTestData(context);
+
+                var roleManager = app.ApplicationServices.GetRequiredService<RoleManager<UserRoleEntity>>();
+                var userManager = app.ApplicationServices.GetRequiredService<UserManager<UserEntity>>();
+
+                AddTestUsers(roleManager, userManager).Wait();
+            }
 
             //Turn on details errors
             app.UseDeveloperExceptionPage();
@@ -86,6 +87,27 @@ namespace PhilameterAPI
             //AddTestData(context);
 
             app.UseMvc();
+        }
+
+        private static async Task AddTestUsers(
+            RoleManager<UserRoleEntity> roleManager,
+            UserManager<UserEntity> userManager)
+        {
+            await roleManager.CreateAsync(new UserRoleEntity("Admin"));
+
+            var user = new UserEntity
+            {
+                Email = "admin@philameter.com",
+                UserName = "admin",
+                FirstName = "Ad",
+                LastName = "Min",
+                Created = DateTime.UtcNow
+            };
+
+            await userManager.CreateAsync(user, "@GEO1234");
+            await userManager.AddToRoleAsync(user, "Admin");
+            await userManager.UpdateAsync(user);
+
         }
 
         private static void AddTestData(StatisticContext context)
