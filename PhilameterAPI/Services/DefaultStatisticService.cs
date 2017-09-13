@@ -39,5 +39,15 @@ namespace PhilameterAPI.Services
             return result;
 
         }
+
+        public Task<Category> GetCategoryAsync(int Id, CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Category>> GetAllCategoriesAsync(CancellationToken ct)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

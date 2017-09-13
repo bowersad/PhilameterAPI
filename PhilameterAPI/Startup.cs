@@ -76,7 +76,7 @@ namespace PhilameterAPI
                 var roleManager = app.ApplicationServices.GetRequiredService<RoleManager<UserRoleEntity>>();
                 var userManager = app.ApplicationServices.GetRequiredService<UserManager<UserEntity>>();
 
-                AddTestUsers(roleManager, userManager).Wait();
+                //AddTestUsers(roleManager, userManager).Wait();
             }
 
             //Turn on details errors
