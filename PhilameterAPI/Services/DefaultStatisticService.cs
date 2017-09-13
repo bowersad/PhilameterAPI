@@ -40,14 +40,19 @@ namespace PhilameterAPI.Services
 
         }
 
-        public Task<Category> GetCategoryAsync(int Id, CancellationToken ct)
+        public Task<Categories> GetCategoryAsync(int Id, CancellationToken ct)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<Category>> GetAllCategoriesAsync(CancellationToken ct)
+        public async Task<List<Categories>> GetAllCategoriesAsync(CancellationToken ct)
         {
-            throw new NotImplementedException();
+            List<CategoryEntity> entity;
+            entity = await _context.Categories.ToListAsync(ct);
+
+
+            var result = Mapper.Map<List<Categories>>(entity);
+            return result;
         }
     }
 }

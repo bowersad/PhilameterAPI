@@ -24,6 +24,7 @@ namespace PhilameterAPI
 
 
         public DbSet<StatEntity> Stats { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
 
     }
 }

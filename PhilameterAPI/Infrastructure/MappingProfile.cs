@@ -15,7 +15,7 @@ namespace PhilameterAPI.Infrastructure
             CreateMap<StatEntity, Statistics>()
                 .ForMember(dest => dest.Stat, opt => opt.MapFrom(src => src.Stat));
 
-            CreateMap<CategoryEntity, Category>()
+            CreateMap<CategoryEntity, Categories>()
                 .ForMember(dest => dest.CategoryId, opt => opt.MapFrom(src => src.Id));
 
         }

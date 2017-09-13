@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PhilameterAPI.Models
 {
-    public class Category : Resource
+    public class Categories : Resource
     {
         public int CategoryId { get; set; }
 
