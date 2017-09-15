@@ -18,6 +18,15 @@ namespace PhilameterAPI.Controllers
             _service = service;
         }
 
+        [HttpGet("/Category/{Id}")]
+        public async Task<IActionResult> GetCategory(int Id, CancellationToken ct)
+        {
+            var result = await _service.GetCategoryAsync(Id, ct);
+            if (result == null) return NotFound();
+
+            return Ok(result);
+        }
+
         [HttpGet]
         public async Task<IActionResult> CategoryAll(CancellationToken ct)
         {
@@ -26,5 +35,7 @@ namespace PhilameterAPI.Controllers
 
             return Ok(result);
         }
+
+       
     }
 }
