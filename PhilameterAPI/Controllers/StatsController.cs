@@ -37,5 +37,11 @@ namespace PhilameterAPI.Controllers
 
             return Ok(result);
         }
+
+        [HttpPut]
+        public IActionResult Statistic(int id, [FromBody]StatisticViewModel statistic)
+        {
+            throw new NotImplementedException();            
+        }
     }
 }
