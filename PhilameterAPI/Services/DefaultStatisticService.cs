@@ -69,5 +69,25 @@ namespace PhilameterAPI.Services
             return result;
 
         }
+
+        public async Task<int> AddStatAsync(string name, string description, decimal value, CancellationToken ct)
+        {
+
+            var StatValue = System.Convert.ToDouble(value);
+
+            var newStat = _context.Stats.Add(new StatEntity
+            {
+                Name = name,
+                Details = description,
+                Stat = StatValue,
+                Category_Id = 1
+            });
+
+            var created = await _context.SaveChangesAsync(ct);
+
+            if (created < 1) throw new InvalidOperationException("Could not add the stat");
+
+            return created;
+        }
     }
 }

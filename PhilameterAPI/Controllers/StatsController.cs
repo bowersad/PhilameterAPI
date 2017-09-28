@@ -38,8 +38,10 @@ namespace PhilameterAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPut]
-        public IActionResult Statistic(int id, [FromBody]StatisticViewModel statistic)
+        [HttpPost("Stats/{Id}")]
+        public async Task<IActionResult> AddStatistic(int Id,
+            [FromBody]StatisticViewModel statistic,
+            CancellationToken ct)
         {
             throw new NotImplementedException();            
         }
