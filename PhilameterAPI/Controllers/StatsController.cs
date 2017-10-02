@@ -43,6 +43,11 @@ namespace PhilameterAPI.Controllers
             [FromBody]StatisticViewModel statistic,
             CancellationToken ct)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new ApiError(ModelState));
+            }
+
             throw new NotImplementedException();            
         }
     }
