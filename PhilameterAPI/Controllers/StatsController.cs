@@ -38,7 +38,8 @@ namespace PhilameterAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPost("Stats/{Id}")]
+
+        [HttpPost("/Stats/{Id}")]
         public async Task<IActionResult> AddStatistic(int Id,
             [FromBody]StatisticViewModel statistic,
             CancellationToken ct)
@@ -48,7 +49,7 @@ namespace PhilameterAPI.Controllers
                 return BadRequest(new ApiError(ModelState));
             }
 
-            throw new NotImplementedException();            
+            throw new NotImplementedException();
         }
     }
 }
