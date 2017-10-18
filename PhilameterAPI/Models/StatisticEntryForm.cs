@@ -15,7 +15,7 @@ namespace PhilameterAPI.Models
         public string Description { get; set; }
 
         [Required]
-        public decimal? Value { get; set; }
+        public decimal Value { get; set; }
 
     }
 }
