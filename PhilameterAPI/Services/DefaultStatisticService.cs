@@ -70,13 +70,14 @@ namespace PhilameterAPI.Services
 
         }
 
-        public async Task<int> AddStatAsync(string name, string description, decimal value, CancellationToken ct)
+        public async Task<int> AddStatAsync(int id, string name, string description, decimal value, CancellationToken ct)
         {
 
             var StatValue = System.Convert.ToDouble(value);
 
             var newStat = _context.Stats.Add(new StatEntity
             {
+                Id = id,
                 Name = name,
                 Details = description,
                 Stat = StatValue,

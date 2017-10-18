@@ -14,7 +14,8 @@ namespace PhilameterAPI.Services
 
         Task<List<Statistics>> GetAllStatsAsync(CancellationToken ct);
 
-        Task<int> AddStatAsync(string Name,
+        Task<int> AddStatAsync(int Id,
+            string Name,
             string Description,
             decimal value,
             CancellationToken ct);
