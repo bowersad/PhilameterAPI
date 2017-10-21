@@ -70,7 +70,12 @@ namespace PhilameterAPI.Services
 
         }
 
-        public async Task<int> AddStatAsync(int id, string name, string description, decimal value, CancellationToken ct)
+        public async Task<int> AddStatAsync(int id, 
+            string name, 
+            string description, 
+            decimal value, 
+            int categoryId,
+            CancellationToken ct)
         {
 
             var StatValue = System.Convert.ToDouble(value);
@@ -81,7 +86,7 @@ namespace PhilameterAPI.Services
                 Name = name,
                 Details = description,
                 Stat = StatValue,
-                Category_Id = 1
+                Category_Id = categoryId
             });
 
             var created = await _context.SaveChangesAsync(ct);

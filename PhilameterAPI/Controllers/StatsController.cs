@@ -49,7 +49,12 @@ namespace PhilameterAPI.Controllers
                 return BadRequest(new ApiError(ModelState));
             }
 
-            var result = await _service.AddStatAsync(Id, statistic.Name, statistic.Description, statistic.Value, ct);
+            var result = await _service.AddStatAsync(Id, 
+                statistic.Name, 
+                statistic.Description, 
+                statistic.Value, 
+                statistic.CategoryId,
+                ct);
             if (result == null) return NotFound();
 
             return Ok(result);

@@ -17,5 +17,8 @@ namespace PhilameterAPI.Models
         [Required]
         public decimal Value { get; set; }
 
+        [Required]
+        public int CategoryId { get; set; }
+
     }
 }

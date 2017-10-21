@@ -18,6 +18,7 @@ namespace PhilameterAPI.Services
             string Name,
             string Description,
             decimal value,
+            int categoryId,
             CancellationToken ct);
 
         Task<Categories> GetCategoryAsync(int Id, CancellationToken ct);
