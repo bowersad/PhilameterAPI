@@ -17,6 +17,10 @@ namespace PhilameterAPI.Models
 
         public double Stat { get; set; }
 
+        public string PanelClass { get; set; }
+
+        public string FontAwesomeIcon { get; set; }
+
         //public int StatPeriod { get; set; }
 
 

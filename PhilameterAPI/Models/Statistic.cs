@@ -16,6 +16,10 @@ namespace PhilameterAPI.Models
         public decimal Stat { get; set; }
 
         public StatPeriod Frequency { get; set; }
+
+        public string PanelClass { get; set; }
+
+        public string FontAwesomeIcon { get; set; }
     }
 
     public enum StatPeriod { daily, weekly, monthly, yearly }
