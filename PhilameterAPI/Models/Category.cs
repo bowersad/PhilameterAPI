@@ -10,5 +10,7 @@ namespace PhilameterAPI.Models
         public int CategoryId { get; set; }
 
         public string Name { get; set; }
+
+        public string FontAwesomeIcon { get; set; }
     }
 }
