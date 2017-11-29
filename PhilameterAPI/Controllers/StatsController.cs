@@ -55,8 +55,7 @@ namespace PhilameterAPI.Controllers
                 statistic.Value, 
                 statistic.CategoryId,
                 ct);
-            if (result == null) return NotFound();
-
+           
             return Ok(result);
 
         }
